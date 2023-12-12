@@ -1,0 +1,29 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  background-color: beige;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 1rem;
+}
+
+.logo{
+  border-radius: 50%;
+  width: 120px;
+}
+
+.searchBar{
+  outline:none;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 1rem;
+  width: 80%;
+}
+
+.icon{
+  width: 70px;
+}
