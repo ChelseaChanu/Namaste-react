@@ -103,7 +103,11 @@ const TitleComponentTag = ({header1,header2,header3})=>{
     </div>
   );
 }
-
+// root.render({<TitleComponent});
+// root.render(<TitleComponent>
+// <p> These are headers </p>
+//  <TitleComponent/>
+// );
 // root.render(<TitleComponentTag
 //             header1="This is header1 with tag"
 //             header2="This is header2 with tag"

@@ -122,3 +122,11 @@ The most commonly use values of 'type' attribute are:
     // JavaScript module code here
 </script>
 ```
+
+## {TitleComponent} vs `<TitleComponent/>` vs  `<TitleComponent> </TitleComponent>` in JSX?
+
+1. {TitleComponent} : In JSX, JavaScript can be embedded within {}. If "TitleComponent" is a variable or an expression that evaluates to a React component, it will be rendered.
+
+2. `<TitleComponent/>`: It is a self-closing tag syntax for rendering React component. It is equivalent to writing `<TitleComponent> </TitleComponent>`. It is used for stateless functional components or class components.
+
+3. `<TitleComponent> </TitleComponent>`: It represents the opening and closing tags of a React component. It is used to render some contents or child components within the opening and closing tags.
