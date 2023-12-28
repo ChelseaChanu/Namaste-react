@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "Basic Grotesque Arabic Pro-Bold";
+  src: url('assets/Fonts/BasisGrotesqueArabicPro-Bold.woff2') format("woff2"),
+        url('assets/Fonts/BasisGrotesqueArabicPro-Bold.woff') format("woff");
+}
+
+@font-face {
+  font-family: "Basic Grotesque Arabic Pro-Regular";
+  src: url('assets/Fonts/BasisGrotesqueArabicPro-Regular.woff2') format("woff2"),
+        url('assets/Fonts/BasisGrotesqueArabicPro-Regular.woff') format("woff");
+}
+
+@font-face {
+  font-family: "Basic Grotesque Arabic Pro-Light";
+  src: url('assets/Fonts/BasisGrotesqueArabicPro-Light.woff2') format("woff2"),
+        url('assets/Fonts/BasisGrotesqueArabicPro-Light.woff') format("woff");
+}
+
+@font-face {
+  font-family: "Proxima Nova Font";
+  src: url('assets/Fonts/ProximaNovaFont.woff2') format("woff2"),
+        url('assets/Fonts/ProximaNovaFont.woff') format("woff");
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h3,p{
+  margin: 0;
+  padding: 0;
+}
+
+.appLayout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 -7px 46px #767474;
+    box-sizing: border-box;
+    padding: 10px 4rem 10px 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 8rem;
+    width: 100vw;
+    z-index: 10000;
+    &__logoContainer{
+      &__logo{
+        width: 70px;
+      }
+    }
+
+    &__features{
+      &__list{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+      color: #383737;
+      font-family: "Proxima Nova Font";
+      font-size: 1.3rem;
+      font-weight: 500;
+      }
+    }
+  }
+
+  .appBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 8rem;
+    z-index: 0;
+    .restauContainer{
+      display: grid;
+      grid-template-columns: repeat(4, 16rem);
+      gap: 2rem;
+      width: 74%;
+      padding: 2rem 0;
+  
+      &__restauCard:hover{
+        transform: scale(0.95);
+        transition: transform 950ms ease;
+      }
+      &__restauCard{
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-radius: 6px;
+        border: 1px solid #d9dcdc;
+        box-shadow: 2px 2px 6px #d4d6d6;
+        height: 18rem;
+        width: 16rem;
+        &__image{
+          border-radius: 6px;
+          height: 150px;
+          width: 100%;
+          &__img{
+            border-radius: 6px;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+        }
+  
+        &__details{
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 0 14px 14px 14px;
+          &__name{
+            font-family: "Basic Grotesque Arabic Pro-Bold";
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          &__info{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Basic Grotesque Arabic Pro-Bold";
+            font-size: 16px;
+            &__star{
+              width: 18px;
+            }
+          }
+
+          &__cuisine,
+          &__address{
+            font-family: "Basic Grotesque Arabic Pro-Light";
+            font-size: 16px;
+          }
+
+          &__cuisine{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}

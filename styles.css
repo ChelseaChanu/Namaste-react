@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Basic Grotesque Arabic Pro-Bold";
+  src: url("assets/Fonts/BasisGrotesqueArabicPro-Bold.woff2") format("woff2"), url("assets/Fonts/BasisGrotesqueArabicPro-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Basic Grotesque Arabic Pro-Regular";
+  src: url("assets/Fonts/BasisGrotesqueArabicPro-Regular.woff2") format("woff2"), url("assets/Fonts/BasisGrotesqueArabicPro-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Basic Grotesque Arabic Pro-Light";
+  src: url("assets/Fonts/BasisGrotesqueArabicPro-Light.woff2") format("woff2"), url("assets/Fonts/BasisGrotesqueArabicPro-Light.woff") format("woff");
+}
+@font-face {
+  font-family: "Proxima Nova Font";
+  src: url("assets/Fonts/ProximaNovaFont.woff2") format("woff2"), url("assets/Fonts/ProximaNovaFont.woff") format("woff");
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appLayout .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 -7px 46px #767474;
+  box-sizing: border-box;
+  padding: 10px 4rem 10px 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 8rem;
+  width: 100vw;
+  z-index: 10000;
+}
+.appLayout .header__logoContainer__logo {
+  width: 70px;
+}
+.appLayout .header__features__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  color: #383737;
+  font-family: "Proxima Nova Font";
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.appLayout .appBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 8rem;
+  z-index: 0;
+}
+.appLayout .appBody .restauContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 16rem);
+  gap: 2rem;
+  width: 74%;
+  padding: 2rem 0;
+}
+.appLayout .appBody .restauContainer__restauCard:hover {
+  transform: scale(0.95);
+  transition: transform 950ms ease;
+}
+.appLayout .appBody .restauContainer__restauCard {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 6px;
+  border: 1px solid #d9dcdc;
+  box-shadow: 2px 2px 6px #d4d6d6;
+  height: 18rem;
+  width: 16rem;
+}
+.appLayout .appBody .restauContainer__restauCard__image {
+  border-radius: 6px;
+  height: 150px;
+  width: 100%;
+}
+.appLayout .appBody .restauContainer__restauCard__image__img {
+  border-radius: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.appLayout .appBody .restauContainer__restauCard__details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 14px 14px 14px;
+}
+.appLayout .appBody .restauContainer__restauCard__details__name {
+  font-family: "Basic Grotesque Arabic Pro-Bold";
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.appLayout .appBody .restauContainer__restauCard__details__info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Basic Grotesque Arabic Pro-Bold";
+  font-size: 16px;
+}
+.appLayout .appBody .restauContainer__restauCard__details__info__star {
+  width: 18px;
+}
+.appLayout .appBody .restauContainer__restauCard__details__cuisine, .appLayout .appBody .restauContainer__restauCard__details__address {
+  font-family: "Basic Grotesque Arabic Pro-Light";
+  font-size: 16px;
+}
+.appLayout .appBody .restauContainer__restauCard__details__cuisine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}/*# sourceMappingURL=styles.css.map */

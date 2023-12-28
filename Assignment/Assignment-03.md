@@ -130,3 +130,125 @@ The most commonly use values of 'type' attribute are:
 2. `<TitleComponent/>`: It is a self-closing tag syntax for rendering React component. It is equivalent to writing `<TitleComponent> </TitleComponent>`. It is used for stateless functional components or class components.
 
 3. `<TitleComponent> </TitleComponent>`: It represents the opening and closing tags of a React component. It is used to render some contents or child components within the opening and closing tags.
+
+## Code:
+
+```jsx
+// using React.createElement()
+const container = React.createElement("div",{className:"title"},
+  [
+    React.createElement("h1",{},"This is header1"),
+    React.createElement("h2",{},"This is header2"),
+    React.createElement("h3",{},"This is header3")
+  ]
+);
+
+// using jsx
+const containerJSX = (
+<div className='title'>
+  <h1>This is header1</h1>
+  <h2>This is header2</h2>
+  <h3>This is header3</h3>
+</div>
+);
+
+// using functional component
+const TitleComponent = ()=>{
+  return (
+    <div className='title'>
+      <h1>This is header1</h1>
+      <h2>This is header2</h2>
+      <h3>This is header3</h3>
+    </div>
+  );
+}
+
+// passing attributes into tag
+const TitleComponentTag = ({header1,header2,header3})=>{
+  return (
+    <div className='title'>
+      <h1>{header1}</h1>
+      <h2>{header2}</h2>
+      <h3>{header3}</h3>
+    </div>
+  );
+}
+root.render(<TitleComponentTag
+            header1="This is header1 with tag"
+            header2="This is header2 with tag"
+            header3="This is header3 with tag"/>);
+
+// component composition
+const ParaComponent = ()=>{
+  return (
+    <p>This is a para</p>
+  );
+}
+
+const TitleComponent = ()=>{
+  return (
+    <div className='title'>
+      <h1>This is header1</h1>
+      <h2>This is header2</h2>
+      <h3>This is header3</h3>
+      <ParaComponent/>
+    </div>
+  );
+}
+root.render(<TitleComponent);
+
+// {TitleComponent} vs `<TitleComponent/>` vs  `<TitleComponent> </TitleComponent>` in JSX
+
+root.render({<TitleComponent});
+root.render(<TitleComponent/>);
+root.render(<TitleComponent>
+<p> These are headers </p>
+ <TitleComponent/>
+);
+
+// header component
+const HeaderComponent = ()=>{
+  return(
+    <div className='header'>
+      <img src='https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg' alt='bird' className='logo'/>
+      <input type='text' placeholder='Search...' className='searchBar' />
+      <img src='https://cdn-icons-png.flaticon.com/128/260/260236.png' alt='person' className='icon'/>
+    </div>
+  );
+}
+
+root.render(<HeaderComponent/>);
+```
+
+```css
+/* style for header component */
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  background-color: beige;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 1rem;
+}
+
+.logo{
+  border-radius: 50%;
+  width: 120px;
+}
+
+.searchBar{
+  outline:none;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 1rem;
+  width: 80%;
+}
+
+.icon{
+  width: 70px;
+}
+```

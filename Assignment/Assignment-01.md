@@ -62,3 +62,28 @@ async and defer are attributes that can be added to HTML script tags to control 
     - Scripts with the defer attribute will be executed in the order they appear in the HTML, just before the DOMContentLoaded event is fired.
 
     - defer is ideal for scripts that rely on the DOM being fully parsed and for maintaining the order of script execution.
+
+
+## Code:
+
+```jsx
+const content="Hello World from React!";
+const heading = React.createElement("h1",{id:"heading"},content);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+```
+
+<!-- nested html
+<div id="parent">
+ <div id="child">
+  <h1>Nested HTML Content</h1>
+ </div>
+</div> -->
+
+```jsx
+const parent = React.createElement("div",{id:"parent"},
+            React.createElement("div",{id:"child"},
+            [React.createElement("h1",{id:"child1"},"Nested HTML Content"),
+            React.createElement("h2",{id:"child2"},"Sibling")]));
+root.render(parent);
+```
