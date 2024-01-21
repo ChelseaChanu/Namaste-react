@@ -40,12 +40,41 @@ h3, p {
   position: fixed;
   top: 0;
   left: 0;
-  height: 8rem;
+  height: 5rem;
   width: 100vw;
   z-index: 10000;
 }
 .appLayout .header__logoContainer__logo {
-  width: 70px;
+  width: 80px;
+}
+.appLayout .header__searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 8px 1.2rem;
+  background-color: #f7f9f9;
+  border: 1px solid #ebedee;
+  border-radius: 60px;
+  width: 35rem;
+}
+.appLayout .header__searchContainer__search {
+  background-color: #f7f9f9;
+  outline: none;
+  border: none;
+  font-family: "Basic Grotesque Arabic Pro-Light";
+  font-size: 18px;
+  width: 90%;
+}
+.appLayout .header__searchContainer__btn:hover {
+  background-color: #9aa4e1;
+}
+.appLayout .header__searchContainer__btn {
+  border: none;
+  background-color: #e4e6ee;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
 .appLayout .header__features__list {
   display: flex;
@@ -64,8 +93,20 @@ h3, p {
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 8rem;
+  top: 6rem;
   z-index: 0;
+}
+.appLayout .appBody__heading {
+  font-family: "Proxima Nova Font";
+  font-size: 2.2rem;
+  text-align: left;
+  width: 74%;
+}
+.appLayout .appBody .filterButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 .appLayout .appBody .restauContainer {
   display: grid;
@@ -83,19 +124,19 @@ h3, p {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  border-radius: 6px;
+  border-radius: 26px 26px 10px 10px;
   border: 1px solid #d9dcdc;
-  box-shadow: 2px 2px 6px #d4d6d6;
+  box-shadow: 2px 2px 6px #dadddd;
   height: 18rem;
   width: 16rem;
 }
 .appLayout .appBody .restauContainer__restauCard__image {
-  border-radius: 6px;
+  border-radius: 20px;
   height: 150px;
   width: 100%;
 }
 .appLayout .appBody .restauContainer__restauCard__image__img {
-  border-radius: 6px;
+  border-radius: 20px;
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
@@ -132,4 +173,16 @@ h3, p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.primary-btn {
+  cursor: pointer;
+  outline: none;
+  background-color: white;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid #d5dada;
+  border-radius: 25px;
+  box-shadow: 1px 1px 3px #d1cece;
+  font-family: "Basic Grotesque Arabic Pro-Regular";
+  font-size: 14px;
 }/*# sourceMappingURL=styles.css.map */

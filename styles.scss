@@ -47,12 +47,42 @@ h3,p{
     position: fixed;
     top: 0;
     left: 0;
-    height: 8rem;
+    height: 5rem;
     width: 100vw;
     z-index: 10000;
     &__logoContainer{
       &__logo{
-        width: 70px;
+        width: 80px;
+      }
+    }
+
+    &__searchContainer{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px 8px 1.2rem;
+      background-color: #f7f9f9;
+      border: 1px solid #ebedee;
+      border-radius: 60px;
+      width: 35rem;
+      &__search{
+        background-color: #f7f9f9;
+        outline: none;
+        border: none;
+        font-family: "Basic Grotesque Arabic Pro-Light";
+        font-size: 18px;
+        width: 90%;
+      }
+      &__btn:hover{
+        background-color: #9aa4e1;
+      }
+      &__btn{
+        border: none;
+        background-color: #e4e6ee;
+        cursor: pointer;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
       }
     }
 
@@ -77,8 +107,23 @@ h3,p{
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 8rem;
+    top: 6rem;
     z-index: 0;
+
+    &__heading{
+      font-family: "Proxima Nova Font";
+      font-size: 2.2rem;
+      text-align: left;
+      width: 74%;
+    }
+
+    .filterButtons{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
     .restauContainer{
       display: grid;
       grid-template-columns: repeat(4, 16rem);
@@ -95,17 +140,17 @@ h3,p{
         display: flex;
         flex-direction: column;
         gap: 12px;
-        border-radius: 6px;
+        border-radius: 26px 26px 10px 10px;
         border: 1px solid #d9dcdc;
-        box-shadow: 2px 2px 6px #d4d6d6;
+        box-shadow: 2px 2px 6px #dadddd;
         height: 18rem;
         width: 16rem;
         &__image{
-          border-radius: 6px;
+          border-radius: 20px;
           height: 150px;
           width: 100%;
           &__img{
-            border-radius: 6px;
+            border-radius: 20px;
             object-fit: cover;
             height: 100%;
             width: 100%;
@@ -150,4 +195,16 @@ h3,p{
       }
     }
   }
+}
+
+.primary-btn{
+  cursor: pointer;
+  outline: none;
+  background-color: white;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid #d5dada;
+  border-radius: 25px;
+  box-shadow: 1px 1px 3px #d1cece;
+  font-family: "Basic Grotesque Arabic Pro-Regular";
+  font-size: 14px;
 }
