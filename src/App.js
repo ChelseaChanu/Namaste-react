@@ -3,19 +3,29 @@ import ReactDOM from "react-dom/client";
 import "../styles.css";
 
 import Header from "./components/Header";
-import RestauContainer from "./components/RestauContainer";
-import FilterButtons from "./components/FilterButtons";
-import restaurants from "./utils/mockData";
+import AppBody from "./components/AppBody";
 
-import {useState} from "react"
+import {API_URL} from "./utils/constants";
+import {useState,useEffect} from "react"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const AppLayout = () => {
-  const[data, setData] = useState(restaurants);
+const App = () => {
+  const[data, setData] = useState([]);
+  const [filteredRestau, setfilteresRestau] = useState([]);
 
-  const handleFilter = (data)=>{
-    setData(data);
+  useEffect(()=>{
+    fetchData();
+  },[]);
+
+  const fetchData = async ()=>{
+    const data = await fetch(API_URL);
+    const json = await data.json();
+    setData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setfilteresRestau(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  }
+  const handleFilter = (filteredRestau)=>{
+    setfilteresRestau(filteredRestau);
   }
   return (
     <div className="appLayout">
@@ -23,13 +33,13 @@ const AppLayout = () => {
         restauList={data}
         onFilter={handleFilter}
       />
-      <div className="appBody">
-        <h1 className="appBody__heading">Restaurants with online delivery.</h1>
-        <FilterButtons onFilter={handleFilter}/>
-        <RestauContainer restauList={data}/>
-      </div>
+      <AppBody 
+       restauList={data}
+       filterRestau={filteredRestau}
+       onFilter={handleFilter}
+      />
     </div>
   );
 };
 
-root.render(<AppLayout/>);
+root.render(<App/>);

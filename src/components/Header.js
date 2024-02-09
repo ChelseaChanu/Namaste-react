@@ -16,18 +16,17 @@ const Header = (props) => {
     const filtered = restauList.filter((restau)=>{
       const inputArr = inputValue.toLowerCase().split(" ");
       const cuisines = restau.info.cuisines.map((cuisine)=> cuisine.toLowerCase());
-
-      // check if name matches
-      const case1 = restau.info.name.toLowerCase() === inputValue.toLowerCase();
+      
       // check if cuisine is present
-      const case2 = restau.info.cuisines.some(element => element.toLowerCase() === inputValue.toLowerCase());
+      const case1 = restau.info.cuisines.some(element => element.toLowerCase() === inputValue.toLowerCase());
       // check if all the cuisines is present
-      const case3 = inputArr.some(ele => cuisines.includes(ele));
+      const case2 = inputArr.some(ele => cuisines.includes(ele));
       // check if part of input match name
-      const case4 = inputArr.some(ele => ele===restau.info.name.toLowerCase())
+      const case3 = inputArr.some(ele => restau.info.name.toLowerCase().includes(ele))
 
-      return case1 || case2 || case3 || case4;
+      return case1 || case2 || case3;
     });
+    // setfilteresRestau(filtered);
     onFilter(filtered);
   }
 

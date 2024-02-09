@@ -102,7 +102,7 @@ const CountClick = ()=>{
 export default CountClick;
 ```
 
-2. useEffect: it allows functional components to use lifecycle methods. It is used for side effects in components, such as data fetching, subscriptions, or manually changing the DOM.
+2. useEffect: it allows functional components to use lifecycle methods. It is used for side effects in components, such as data fetching, subscriptions, or manually changing the DOM. It has two arguments a callback function and a dependency array, the callback func will be called after the component is rendered.
 
 ```jsx
 import React, {useEffect} from 'react';

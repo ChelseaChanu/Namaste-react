@@ -1,1 +1,2 @@
 export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/";
+export const API_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.185075&lng=91.75814109999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";

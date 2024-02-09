@@ -1,11 +1,10 @@
 import RestauCard from "./RestauCard";
-import restaurants from "../utils/mockData";
 
-const RestauContainer = ({restauList})=>{
+const RestauContainer = ({filterRestau})=>{
   return(
     <div className="restauContainer">
       {
-        restauList.map((restaurant)=> <RestauCard key={restaurant.info.id} restauData = {restaurant}/>)
+        filterRestau?.map((restaurant)=> <RestauCard key={restaurant.info.id} restauData = {restaurant}/>)
       }
     </div>
   );

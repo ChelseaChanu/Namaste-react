@@ -1,21 +1,27 @@
 import PrimaryBtn from "./PrimaryBtn";
-import restaurants from "../utils/mockData";
 
-const FilterButtons = ({onFilter})=>{
+const FilterButtons = (props)=>{
+  const {onFilter, restauList} = props;
+
+  const getNumericalData = (string)=>{
+    const parts = string.split(/\D+/).filter(ele=> ele !== "");
+    const numberValue = parseInt(parts[0],10);
+    console.log("Called");
+    return numberValue;
+  }
+
   return(
     <div className="filterButtons">
       <PrimaryBtn 
       buttonName="Ratings 4.0+"
-      initialRestau={restaurants}
-      filterFunc={(restaurants)=>
-        restaurants.filter(restau => restau.info.avgRating > 4.0)
+      filterFunc={()=>
+        restauList.filter(restau => restau.info.avgRating > 4.0)
       }
       onFilter={onFilter}/>
-       <PrimaryBtn 
+      <PrimaryBtn 
       buttonName="Less than 300"
-      initialRestau={restaurants}
-      filterFunc={(restaurants)=>
-        restaurants.filter(restau => restau.info.costForTwo < 300)
+      filterFunc={()=>
+        restauList.filter(restau => getNumericalData(restau.info.costForTwo) < 300)
       }
       onFilter={onFilter}/>
     </div>

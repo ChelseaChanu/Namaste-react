@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const PrimaryBtn = (props)=>{
-  const {buttonName, initialRestau, filterFunc, onFilter} = props;
-  const [restauList, setRestauList] = useState(initialRestau);
+  const {buttonName, filterFunc, onFilter} = props;
 
   // filter restau based on rating
   const filterRestau = ()=>{
-    const filtered = filterFunc(restauList);
+    const filtered = filterFunc();
     setRestauList(filtered);
     onFilter(filtered);
   }
