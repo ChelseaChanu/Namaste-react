@@ -37,6 +37,7 @@ Six different use cases of useEffect:
 1. 
 ```jsx
 // if the dependency array is not passs then it runs after every render
+// which means useEffect is called on every render
 //Run after every render
 useEffect(()=>{
     // side-effect

@@ -21,7 +21,7 @@ const FilterButtons = (props)=>{
       <PrimaryBtn 
       buttonName="Less than 300"
       filterFunc={()=>
-        restauList.filter(restau => getNumericalData(restau.info.costForTwo) < 300)
+        restauList.filter(restau => getNumericalData(restau.info.costForTwo) <= 300)
       }
       onFilter={onFilter}/>
     </div>

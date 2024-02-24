@@ -1,45 +1,59 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import "../styles.css";
 
 import Header from "./components/Header";
 import AppBody from "./components/AppBody";
+import AboutUs from "./components/AboutUs";
+import ValuesAtSwiggy from "./components/ValuesAtSwiggy";
+import Footer from "./components/Footer";
+import RestaurantMenu from "./components/RestaurantMenu";
+import {useEffect} from "react"
+import { DataContextProvider } from "./components/DataContextProvider";
 
-import {API_URL} from "./utils/constants";
-import {useState,useEffect} from "react"
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const App = () => {
-  const[data, setData] = useState([]);
-  const [filteredRestau, setfilteresRestau] = useState([]);
-
+  
   useEffect(()=>{
-    fetchData();
+    document.title = "Order Food Online from India's Best Food Delivery Service | Swiggy";
   },[]);
 
-  const fetchData = async ()=>{
-    const data = await fetch(API_URL);
-    const json = await data.json();
-    setData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setfilteresRestau(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  }
-  const handleFilter = (filteredRestau)=>{
-    setfilteresRestau(filteredRestau);
-  }
   return (
-    <div className="appLayout">
-      <Header 
-        restauList={data}
-        onFilter={handleFilter}
-      />
-      <AppBody 
-       restauList={data}
-       filterRestau={filteredRestau}
-       onFilter={handleFilter}
-      />
-    </div>
+    <DataContextProvider >
+      <div className="appLayout">
+        <Header />
+        <Outlet />
+        <Footer/>
+      </div>
+    </DataContextProvider>
   );
 };
 
-root.render(<App/>);
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    children:[
+      {
+        path: "/",
+        element: <AppBody />
+      },
+      {
+        path: "/about",
+        element: <AboutUs/>
+      },
+      {
+        path: "/value",
+        element: <ValuesAtSwiggy/>
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu/>
+      }
+    ]
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter}/>);

@@ -6,7 +6,7 @@ const PrimaryBtn = (props)=>{
   // filter restau based on rating
   const filterRestau = ()=>{
     const filtered = filterFunc();
-    setRestauList(filtered);
+    // setRestauList(filtered);
     onFilter(filtered);
   }
   return(
