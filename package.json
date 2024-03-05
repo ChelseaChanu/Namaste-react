@@ -1,12 +1,9 @@
 {
   "name": "namaste-react",
-  "homepage": "https://chelseachanu.github.io/Namaste-react",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "start": "parcel index.html",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
     "build": "parcel build index.html",
     "test": "Jest"
   },

@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import RestaurantMenu from "./components/RestaurantMenu";
 import {useEffect} from "react"
 import { DataContextProvider } from "./components/DataContextProvider";
+import ErrorPage from "./components/ErrorPage";
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement: <ErrorPage />,
     children:[
       {
         path: "/",

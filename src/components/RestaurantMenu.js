@@ -14,6 +14,7 @@ const RestaurantMenu = ()=>{
   const fetchMenu = async()=>{
     const data = await fetch(`${SWIGGY_MENU_API_URL}${resId}`);
     const json = await data.json();
+    console.log(json);
     setResInfo(json?.data);
   }
   useEffect(()=>{
@@ -22,12 +23,12 @@ const RestaurantMenu = ()=>{
 
   if(resInfo===null) return <ShimmerUI/>;
 
-  const {name, cuisines, areaName, avgRatingString, totalRatingsString} = resInfo?.cards[2]?.card?.card?.info;
-  const {lastMileTravelString} = resInfo?.cards[2]?.card?.card?.info?.sla;
-  const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+  const {name, cuisines, areaName, avgRatingString, totalRatingsString} = resInfo?.cards[0]?.card?.card?.info;
+  const {lastMileTravelString} = resInfo?.cards[0]?.card?.card?.info?.sla;
+  const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
   return (
-    <div className="restaurantMenu">
+    <div className="restaurantMenu appBody">
       <div className="restaurantMenu__container">
         <div className="restaurantMenu__container__details">
           <h1 className="restaurantMenu__container__details__restaurantName">{name}</h1>
@@ -45,8 +46,8 @@ const RestaurantMenu = ()=>{
           </div>
         </div>
         <div className="restaurantMenu__container__recommendation">
-          <h3 className="restaurantMenu__container__recommendation__title">{`Recommended (${itemCards?.length})`}</h3>
-          {itemCards.map((item)=>(
+          <h3 className="restaurantMenu__container__recommendation__title">{`Recommended (${itemCards?.length===undefined? 0: itemCards?.length})`}</h3>
+          {itemCards?.map((item)=>(
             <MenuCard
             key={item.card.info.id}
             isVeg={item.card.info.isVeg}

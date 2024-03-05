@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Footer from './Footer';
 import MapComponent from './MapComponent';
 import Navbar from './Navbar';
 import OverviewCard from './OverviewCard';

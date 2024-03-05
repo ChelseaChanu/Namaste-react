@@ -45,7 +45,7 @@ useEffect(()=>{
 ```
 2. 
 ```jsx
-// if we want to reun once after initial render
+// if we want to run once after initial render
 //Run once after
 // Mounting (Initial Render)
 useEffect(()=>{
