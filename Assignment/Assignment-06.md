@@ -178,9 +178,7 @@ export default Greeting;
 // eg. setTimeOut or storage
 useEffect(()=>{
     // side-effect
-    return ()=>{
-        // clen up side effect
-    };
+     
 },[props, state]);
 ```
 

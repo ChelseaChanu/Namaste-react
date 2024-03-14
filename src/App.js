@@ -42,15 +42,15 @@ const appRouter = createBrowserRouter([
         element: <AppBody />
       },
       {
-        path: "/about",
+        path: "about",
         element: <AboutUs/>
       },
       {
-        path: "/value",
+        path: "value",
         element: <ValuesAtSwiggy/>
       },
       {
-        path: "/restaurants/:resId",
+        path: "restaurants/:resId",
         element: <RestaurantMenu/>
       }
     ]
