@@ -102,6 +102,14 @@ input[type=number]::-webkit-outer-spin-button {
     width: 35rem;
   }
 }
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
 @keyframes slideOutFromRight {
   from {
     transform: translateX(0%);
@@ -114,6 +122,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .appLayout .header {
   display: flex;
@@ -149,6 +158,7 @@ input[type=number]::-webkit-outer-spin-button {
   width: 50px;
 }
 .appLayout .header__container__container__logoContainer__location {
+  cursor: pointer;
   color: #686b78;
   font-family: "Proxima Nova Font";
   font-size: 14px;
@@ -236,9 +246,9 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: relative;
   min-height: calc(100vh - 80px - 238.4px);
+  width: 1120px;
   top: 6rem;
   z-index: 0;
 }
@@ -257,8 +267,8 @@ input[type=number]::-webkit-outer-spin-button {
   padding-top: 1.5rem;
 }
 .appLayout .appBody .restauContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 16rem);
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem 0;
 }
@@ -1002,6 +1012,75 @@ input[type=number]::-webkit-outer-spin-button {
   position: relative;
   top: -14px;
   left: 12px;
+}
+
+.location {
+  background: rgba(40, 44, 63, 0.7);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  position: fixed;
+}
+.location__leftSection {
+  animation: slideInFromLeft 300ms ease-out forwards;
+  background-color: #fff;
+  padding: 1.5rem 40px 0 140px;
+  font-family: "Proxima Nova Font";
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+  width: 562px;
+}
+.location__leftSection__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.location__leftSection__details__closeBtn {
+  color: #535665;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: "Proxima Nova Font";
+  font-style: normal;
+}
+.location__leftSection__details__input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #d4d5d9;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 1rem;
+}
+.location__leftSection__details__input__input {
+  height: 50px;
+  width: 90%;
+  font-family: "Proxima Nova Font";
+  font-size: 1rem;
+  background-color: transparent;
+  line-height: normal;
+  border: none;
+  outline: none;
+}
+.location__leftSection__details__input__btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Proxima Nova Font";
+  font-weight: 600;
+  color: #fc8019;
+}
+.location__rightSection {
+  overflow: hidden;
+  height: 100%;
+  width: calc(100% - 562px);
 }
 
 .loginPage {

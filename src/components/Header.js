@@ -4,44 +4,20 @@ import searchIcon from "../../assets/Images/search-icon.png"
 import closeIcon from "../../assets/Images/close.png"
 import { DataContext } from "./DataContextProvider";
 import LoginPage from "./LoginPage";
+import Location from "./Location";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { LOGO__URL } from "../utils/constants";
 
+import useSearchFilter from "../utils/useSearchFilter";
+import useModal from "../utils/useModal";
+import { isInputEvent } from "formik";
+
 const Header = () => {
-  const {data, handleFilter, loginStatus, updateLoginStatus} = useContext(DataContext);
-  const [inputValue, setInputValue] = useState("");
-  const [showLoginPage, setShowLoginPage] = useState(false);
+  const {data, handleFilter, loginStatus, updateLoginStatus, apiAddress} = useContext(DataContext);
+  const { inputValue, handleSearch, getValue } = useSearchFilter(data, handleFilter);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
-  
-  // get the entered value
-  const getValue = (event)=>{
-    setInputValue(event.target.value);
-  };
-
-  // search the item
-  const searchItem = ()=>{
-    const filtered = data.filter((restau)=>{
-      const inputArr = inputValue.toLowerCase().split(" ");
-      const cuisines = restau.info.cuisines.map((cuisine)=> cuisine.toLowerCase());
-      
-      // check if cuisine is present
-      const case1 = restau.info.cuisines.some(element => element.toLowerCase() === inputValue.toLowerCase());
-      // check if all the cuisines is present
-      const case2 = inputArr.some(ele => cuisines.includes(ele));
-      // check if part of input match name
-      const case3 = inputArr.some(ele => restau.info.name.toLowerCase().includes(ele))
-
-      return case1 || case2 || case3;
-    });
-    // setfilteresRestau(filtered);
-    handleFilter(filtered);
-  }
-
-  const handleSearch = (event)=>{
-    if(event.key==='Enter')
-      searchItem();
-  }
+  const {isModalOpen, openModal, closeModal} = useModal();
 
   // display and close status bar
   const displaySearchBar = ()=>{
@@ -49,18 +25,14 @@ const Header = () => {
   }
 
   // silde in side bar of login 
-
   const displayLogin=()=>{
     if (loginStatus === "Logout") {
       updateLoginStatus("Login");
-      setShowLoginPage(false);
-    } else {
-      setShowLoginPage(true);
+      closeModal("loginModal");
     }
-  }
-
-  const closeLogin=()=>{
-    setShowLoginPage(false);
+     else {
+      openModal("loginModal");
+    }
   }
 
   return (
@@ -69,7 +41,7 @@ const Header = () => {
         <div className="header__container__container" >
           <div className="header__container__container__logoContainer">
             <img className="header__container__container__logoContainer__logo" src={LOGO__URL} alt="logo" />
-            <p className="header__container__container__logoContainer__location">Koramangala, Bengaluru, Karnataka, India</p>
+            <p className="header__container__container__logoContainer__location" onClick={()=>openModal("locationModal")}>{apiAddress}</p>
           </div>
           { searchIsOpen && 
           <div className="header__container__container__searchContainer">
@@ -78,7 +50,7 @@ const Header = () => {
             onChange={getValue} 
             onKeyDown={handleSearch}
             placeholder="Search for food or restaurants"/>
-            <button className="header__container__container__searchContainer__btn" type="submit" onClick={searchItem}>
+            <button className="header__container__container__searchContainer__btn" type="submit" onClick={handleSearch}>
               <img src={searchIcon} alt="search-icon" />
             </button>
           </div>
@@ -98,7 +70,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {showLoginPage && <LoginPage onClose={closeLogin} />}
+      {isModalOpen("loginModal") && <LoginPage onClose={()=>closeModal("loginModal")} />}
+      {isModalOpen("locationModal") && <Location onClose={()=>closeModal("locationModal")}/>}
     </div>
   );
 };

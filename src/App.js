@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import "../styles.css";
@@ -12,13 +12,15 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import {useEffect} from "react"
 import { DataContextProvider } from "./components/DataContextProvider";
 import ErrorPage from "./components/ErrorPage";
-
+import ShimmerUI from "./components/ShimmerUI";
 
 const App = () => {
   
   useEffect(()=>{
     document.title = "Order Food Online from India's Best Food Delivery Service | Swiggy";
   },[]);
+
+  const LazyLoading = lazy(()=> import("../src/components/LazyLoading"));
 
   return (
     <DataContextProvider >
@@ -55,6 +57,15 @@ const appRouter = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/lazy",
+    element: (
+      <Suspense fallback={<ShimmerUI/>}>
+        <LazyLoading/>
+      </Suspense>
+    ),
+    errorElement: <ErrorPage />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

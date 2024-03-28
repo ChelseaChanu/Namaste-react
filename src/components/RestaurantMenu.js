@@ -1,28 +1,17 @@
 import MenuCard from './MenuCard';
 
-import { CDN_URL, SWIGGY_MENU_API_URL } from '../utils/constants';
+import { CDN_URL } from '../utils/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ShimmerUI from './ShimmerUI';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 
 const RestaurantMenu = ()=>{
-  const [resInfo, setResInfo] = useState(null);
   const {resId} = useParams();
-
-  const fetchMenu = async()=>{
-    const data = await fetch(`${SWIGGY_MENU_API_URL}${resId}`);
-    const json = await data.json();
-    console.log(json);
-    setResInfo(json?.data);
-  }
-  useEffect(()=>{
-    fetchMenu();
-  },[]);
-
+  const resInfo = useRestaurantMenu(resId);
   if(resInfo===null) return <ShimmerUI/>;
-
+  
   const {name, cuisines, areaName, avgRatingString, totalRatingsString} = resInfo?.cards[0]?.card?.card?.info;
   const {lastMileTravelString} = resInfo?.cards[0]?.card?.card?.info?.sla;
   const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;

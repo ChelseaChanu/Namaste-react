@@ -33,9 +33,16 @@ const LoginPage = ({onClose})=>{
       e.target.nextElementSibling.classList.remove('labelOnFocus');
   }
 
+  const onLogin = (values, { setSubmitting }) => {
+    updateName(values.name);
+    updateLoginStatus("Logout");
+    onClose(); 
+    setSubmitting(false);
+  }
+
   return(
     <div className="loginPage">
-      <div className="loginPage__leftSection"></div>
+      <div className="loginPage__leftSection" onClick={onClose}></div>
       <div className="loginPage__rightSection">
         <div className="loginPage__rightSection__details">
           <span className="loginPage__rightSection__details__closeBtn" onClick={handleClose}></span>
@@ -47,12 +54,7 @@ const LoginPage = ({onClose})=>{
           </div>
         </div>
         <Formik initialValues={initialValues}  validationSchema={validationSchema} 
-          onSubmit={(values, { setSubmitting }) => {
-            updateName(values.name);
-            updateLoginStatus("Logout");
-            onClose(); 
-            setSubmitting(false);
-          }}
+          onSubmit={onLogin}
         >
           {({ values, touched, errors })=>(
             <Form className="loginPage__rightSection__form">
